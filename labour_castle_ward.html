@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambridge Labour - Castle Ward | Real Change for Our Community</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #d50000 0%, #b71c1c 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .rose {
+            width: 30px;
+            height: 30px;
+            background: #ff4444;
+            border-radius: 50% 0;
+            margin-right: 10px;
+            position: relative;
+            transform: rotate(45deg);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+        
+        .nav-menu a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, rgba(213,0,0,0.9) 0%, rgba(183,28,28,0.9) 100%), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23f0f0f0" width="1200" height="600"/><g fill="%23e0e0e0"><circle cx="200" cy="150" r="50"/><circle cx="800" cy="350" r="80"/><circle cx="400" cy="450" r="30"/><rect x="600" y="100" width="100" height="60" rx="10"/></g></svg>');
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: #d50000;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        
+        .section {
+            padding: 4rem 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #d50000;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #d50000, #b71c1c);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        .card h3 {
+            color: #d50000;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        
+        .achievements {
+            background: #f8f9fa;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #d50000;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -25px;
+            top: 20px;
+            width: 12px;
+            height: 12px;
+            background: #d50000;
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+        
+        .comparison {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .party-card {
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .labour-card {
+            background: linear-gradient(135deg, #d50000, #b71c1c);
+            color: white;
+        }
+        
+        .libdem-card {
+            background: linear-gradient(135deg, #fdb71b, #f7931e);
+            color: white;
+        }
+        
+        .issues-list {
+            list-style: none;
+            text-align: left;
+            margin-top: 1rem;
+        }
+        
+        .issues-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .contact-section {
+            background: linear-gradient(135deg, #d50000, #b71c1c);
+            color: white;
+            text-align: center;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: white;
+            color: #d50000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .footer {
+            background: #333;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        .highlight-stat {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #d50000;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="rose"></div>
+                Cambridge Labour - Castle Ward
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#priorities">Our Priorities</a></li>
+                    <li><a href="#achievements">Labour Delivers</a></li>
+                    <li><a href="#comparison">The Record</a></li>
+                    <li><a href="#contact">Get Involved</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Real Change for Castle Ward</h1>
+            <p>While others make promises, Labour delivers results for working families in Darwin Green, Eddington, and across our community.</p>
+            <div class="cta-buttons">
+                <a href="#priorities" class="btn btn-primary">Our Plan for Castle Ward</a>
+                <a href="#contact" class="btn btn-secondary">Join Our Campaign</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="priorities" class="section">
+        <div class="container">
+            <h2 class="section-title">Our Priorities for Castle Ward</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-icon">🏠</div>
+                    <h3>Affordable Housing That Works</h3>
+                    <p>While the Lib Dems talk, Labour delivers. We've secured hundreds of new affordable homes across Cambridge and will prioritize genuine affordable housing in Castle Ward, not the luxury developments the Lib Dems rubber-stamp.</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">🚌</div>
+                    <h3>Better Public Transport</h3>
+                    <p>Labour has fought to protect and improve bus services connecting Darwin Green and Eddington to the city center. We oppose the Lib Dem cuts to local transport that leave residents stranded.</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">🌳</div>
+                    <h3>Green Spaces & Environment</h3>
+                    <p>Protecting our local green spaces while ensuring new developments like those around Castle Mound include proper community facilities - something the current Lib Dem councillor has failed to secure.</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">📢</div>
+                    <h3>Transparent Communication</h3>
+                    <p>Labour councillors like Simon Smith regularly engage with local media to explain decisions and budget challenges to residents. His public statements on the 'Our Cambridge' transformation programme show the transparent, accountable leadership Castle Ward deserves - in contrast to the silence from our current Lib Dem councillor.</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">💰</div>
+                    <h3>Cost of Living Support</h3>
+                    <p>Labour has frozen Council Tax increases while improving services. We understand the pressures facing working families and will continue to provide real support, not empty gestures.</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">🚴</div>
+                    <h3>Safe Cycling & Walking Routes</h3>
+                    <p>Labour councillors successfully challenged the County Council's flawed Windsor Road/Oxford Road junction plans that would have blocked cyclists with dangerous barriers. We delivered a better solution with traffic calming that keeps routes open for active travel - while the Lib Dem councillor was nowhere to be seen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="achievements" class="section achievements">
+        <div class="container">
+            <h2 class="section-title">Labour's Record for Cambridge</h2>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 3rem;">
+                Since taking control of Cambridge City Council, Labour has transformed the city with the largest investment in affordable housing, community services, and climate action in a generation.
+            </p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 4rem;">
+                <div style="text-align: center; padding: 2rem; background: linear-gradient(135deg, #d50000, #b71c1c); color: white; border-radius: 12px;">
+                    <div style="font-size: 3rem; font-weight: bold;">1,700+</div>
+                    <h4>New Homes Target</h4>
+                    <p style="font-size: 0.9rem;">Including 1,000 council homes - achieved initial 1,000 target a year early</p>
+                </div>
+                <div style="text-align: center; padding: 2rem; background: linear-gradient(135deg, #d50000, #b71c1c); color: white; border-radius: 12px;">
+                    <div style="font-size: 3rem; font-weight: bold;">£4.6m</div>
+                    <h4>Efficiency Savings</h4>
+                    <p style="font-size: 0.9rem;">Net revenue savings while protecting services and keeping Council Tax low</p>
+                </div>
+                <div style="text-align: center; padding: 2rem; background: linear-gradient(135deg, #d50000, #b71c1c); color: white; border-radius: 12px;">
+                    <div style="font-size: 3rem; font-weight: bold;">£1m+</div>
+                    <h4>Community Grants</h4>
+                    <p style="font-size: 0.9rem;">Annual grants to projects helping residents in greatest need</p>
+                </div>
+                <div style="text-align: center; padding: 2rem; background: linear-gradient(135deg, #d50000, #b71c1c); color: white; border-radius: 12px;">
+                    <div style="font-size: 3rem; font-weight: bold;">10%</div>
+                    <h4>Carbon Reduction</h4>
+                    <p style="font-size: 0.9rem;">Latest reduction in council emissions through green investments</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-bottom: 3rem; padding: 2rem; background: white; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.1);">
+                <h3 style="color: #d50000; margin-bottom: 2rem;">Your Labour Castle Ward Councillors</h3>
+                
+                <!-- Campaign Action Images Section -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+                    <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 8px;">
+                        <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #d50000, #b71c1c); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1rem; margin-bottom: 1rem;">
+                            [Campaign Image: Labour team out campaigning with residents]
+                        </div>
+                        <h4 style="color: #d50000;">Active Campaigning</h4>
+                        <p style="font-size: 0.9rem;">Labour councillors and candidates regularly out in Castle Ward, talking to residents and listening to concerns</p>
+                    </div>
+                    
+                    <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 8px;">
+                        <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #d50000, #b71c1c); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1rem; margin-bottom: 1rem;">
+                            [Campaign Image: Strong Labour team with supporters]
+                        </div>
+                        <h4 style="color: #d50000;">Community Support</h4>
+                        <p style="font-size: 0.9rem;">Growing support from Castle Ward residents backing Labour's proven track record of delivery</p>
+                    </div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                    <div style="text-align: center;">
+                        <div style="width: 120px; height: 120px; background: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 120 120\"><rect fill=\"%23f0f0f0\" width=\"120\" height=\"120\" rx=\"60\"/><circle cx=\"60\" cy=\"45\" r=\"20\" fill=\"%23d50000\"/><path d=\"M35 75 Q60 90 85 75 Q85 95 60 95 Q35 95 35 75\" fill=\"%23d50000\"/></svg>'), linear-gradient(135deg, #d50000, #b71c1c); border-radius: 50%; margin: 0 auto 1rem; background-size: cover;"></div>
+                        <h4 style="color: #d50000;">Cllr Simon Smith</h4>
+                        <p style="font-size: 0.9rem; color: #666;">Executive Councillor for Finance & Resources</p>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Elected 2021 • 40+ years planning & local government experience</p>
+                        <p style="font-size: 0.8rem; color: #888; margin-top: 0.5rem;"><em>Leading transparent budget management and community engagement</em></p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="width: 120px; height: 120px; background: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 120 120\"><rect fill=\"%23f0f0f0\" width=\"120\" height=\"120\" rx=\"60\"/><circle cx=\"60\" cy=\"45\" r=\"20\" fill=\"%23d50000\"/><path d=\"M35 75 Q60 90 85 75 Q85 95 60 95 Q35 95 35 75\" fill=\"%23d50000\"/></svg>'), linear-gradient(135deg, #d50000, #b71c1c); border-radius: 50%; margin: 0 auto 1rem; background-size: cover;"></div>
+                        <h4 style="color: #d50000;">Cllr Antoinette Nestor</h4>
+                        <p style="font-size: 0.9rem; color: #666;">Cabinet Member for Culture, Economy & Skills</p>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Leading on economic development & community support</p>
+                        <p style="font-size: 0.8rem; color: #888; margin-top: 0.5rem;"><em>Champion for Darwin Green residents during housing crisis</em></p>
+                    </div>
+                </div>
+                
+                <!-- Campaign Logo Section -->
+                <div style="margin-top: 2rem; padding: 1.5rem; background: linear-gradient(135deg, #d50000, #b71c1c); border-radius: 12px; color: white;">
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 1rem;">
+                        <div style="width: 60px; height: 60px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                            <div style="width: 40px; height: 40px; background: #d50000; border-radius: 50% 0; transform: rotate(45deg); position: relative;">
+                                <div style="position: absolute; top: -5px; left: -5px; width: 30px; height: 30px; background: white; border-radius: 50%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 style="margin: 0; font-size: 1.5rem;">One Cambridge</h3>
+                            <p style="margin: 0; font-size: 1rem;">Castle Ward - Fair for All</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Affordable Housing Programme - Largest in a Generation</h3>
+                    <p>Labour achieved the initial target of 1,000 new homes a year ahead of schedule and is now delivering a minimum of 1,700 new homes including 1,000 council homes - the first Passivhaus accredited council homes in Cambridge. While other councils struggle, Labour delivers.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3>Community Investment & Support Programme</h3>
+                    <p>Over £1 million annually in community grants helping residents in greatest need, funding Citizens' Advice for financial hardship support, running community centres, and investing £120,000 in CCTV upgrades for safer neighborhoods across Cambridge.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3>Climate Action & Green Investment</h3>
+                    <p>Labour has reduced council carbon emissions by 10% through investments in leisure centres with heat pumps and solar panels, while declaring a climate emergency and leading on environmental action across the city.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3>Transparent Leadership & Public Engagement</h3>
+                    <p><strong>Cllr Simon Smith</strong> has led public engagement on the council's budget challenges, appearing regularly in media to explain Labour's approach. In recent public statements, he explained how Labour has delivered significant savings through the 'Our Cambridge' transformation programme while taking "a measured approach" to future challenges - demonstrating the transparent, responsible leadership Castle Ward needs.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3>Financial Management - Protecting Services</h3>
+                    <p>Achieved £4.6 million net revenue savings through efficiencies over two years while protecting frontline services and keeping Council Tax increases minimal - committed to saving £6 million by 2026/27 without cutting services residents depend on.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3>Windsor Road/Oxford Road Junction - Listening to Residents (2024)</h3>
+                    <p>When the County Council proposed installing exclusionary barriers that would have blocked cyclists and created dangerous 90-degree turns at the Windsor Road/Oxford Road junction, Labour councillors worked with residents and cycling groups to get the scheme put on hold. The improved solution now includes traffic calming measures without blocking vital cycling routes - showing Labour listens to the community.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3>Standing Up for Darwin Green Residents (2023)</h3>
+                    <p><strong>Cllr Antoinette Nestor</strong> organized a major public meeting for Darwin Green residents when Barratt David Wilson announced they would demolish 30 completed houses due to foundation issues. She demanded accountability from developers and fought for residents' rights when the Lib Dem councillor remained silent.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="comparison" class="section comparison">
+        <div class="container">
+            <h2 class="section-title">The Choice is Clear</h2>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem;">
+                Compare what Labour has delivered with the Liberal Democrat record of broken promises and failed leadership.
+            </p>
+            
+            <div class="comparison-grid">
+                <div class="party-card labour-card">
+                    <h3>Labour: Delivering Results</h3>
+                    <ul class="issues-list">
+                        <li>✓ Delivered 1,700+ new homes (1,000 council homes)</li>
+                        <li>✓ £4.6m savings while protecting services</li>
+                        <li>✓ £1m+ annual community grants</li>
+                        <li>✓ 10% carbon emissions reduction</li>
+                        <li>✓ Simon Smith: Executive Finance leadership</li>
+                        <li>✓ Antoinette Nestor: Economic development</li>
+                        <li>✓ Stopped dangerous cycling barriers</li>
+                    </ul>
+                    <div style="margin-top: 2rem;">
+                        <div class="highlight-stat">1,700+</div>
+                        <p>new homes delivered by Labour</p>
+                    </div>
+                </div>
+                
+                <div class="party-card libdem-card">
+                    <h3>Lib Dems: Empty Promises</h3>
+                    <ul class="issues-list">
+                        <li>✗ Voted against affordable housing</li>
+                        <li>✗ Raised County Council taxes</li>
+                        <li>✗ Failed to deliver for Castle Ward</li>
+                        <li>✗ Supported transport cuts</li>
+                        <li>✗ Inconsistent on environment</li>
+                        <li>✗ Missing during cost of living crisis</li>
+                        <li>✗ Weak on local issues</li>
+                    </ul>
+                    <div style="margin-top: 2rem;">
+                        <div class="highlight-stat">0</div>
+                        <p>major achievements for Castle Ward</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: white; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.1);">
+                <h3 style="color: #d50000; margin-bottom: 1rem;">The Contrast is Clear</h3>
+                <p style="font-size: 1.1rem; margin-bottom: 1rem;">
+                    While Labour councillors <strong>Simon Smith</strong> and <strong>Antoinette Nestor</strong> have been fighting for Castle Ward residents - organizing public meetings for Darwin Green homeowners, managing the city's finances responsibly, and driving economic recovery - what has Lib Dem Cheney Payne delivered in her years representing the ward?
+                </p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; text-align: left;">
+                    <div style="padding: 1rem; background: #f8f9fa; border-radius: 8px;">
+                        <h4 style="color: #d50000; margin-bottom: 1rem;">Labour Delivers:</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="margin-bottom: 0.5rem;">✓ Stopped dangerous cycling barriers at Windsor/Oxford Rd</li>
+                            <li style="margin-bottom: 0.5rem;">✓ Organized Darwin Green residents' meeting</li>
+                            <li style="margin-bottom: 0.5rem;">✓ Executive leadership on finance & planning</li>
+                            <li style="margin-bottom: 0.5rem;">✓ Cabinet role driving economic recovery</li>
+                            <li style="margin-bottom: 0.5rem;">✓ 40+ years combined experience</li>
+                        </ul>
+                    </div>
+                    <div style="padding: 1rem; background: #fff3cd; border-radius: 8px;">
+                        <h4 style="color: #856404; margin-bottom: 1rem;">Lib Dem Record:</h4>
+                        <ul style="list-style: none; padding: 0; color: #856404;">
+                            <li style="margin-bottom: 0.5rem;">? Absent during Windsor/Oxford Rd junction crisis</li>
+                            <li style="margin-bottom: 0.5rem;">? Invisible during Darwin Green crisis</li>
+                            <li style="margin-bottom: 0.5rem;">? No major achievements for ward</li>
+                            <li style="margin-bottom: 0.5rem;">? Failed to address transport issues</li>
+                            <li style="margin-bottom: 0.5rem;">? Years of unfulfilled promises</li>
+                        </ul>
+                    </div>
+                </div>
+                <p style="font-size: 1.1rem; font-weight: bold; color: #d50000; margin-top: 1rem;">
+                    Castle Ward has working councillors in Labour. It's time to complete the team.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <h2 class="section-title">Get Involved - Make Your Voice Heard</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 3rem;">
+                Join hundreds of Castle Ward residents who are backing Labour for real change in our community.
+            </p>
+            
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" placeholder="Enter your full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="your.email@example.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Postcode (Castle Ward)</label>
+                        <input type="text" placeholder="CB4, CB3" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>How can you help?</label>
+                        <select style="width: 100%; padding: 1rem; border: none; border-radius: 8px; font-size: 1rem;">
+                            <option>Displaying a window poster</option>
+                            <option>Delivering leaflets</option>
+                            <option>Knocking on doors</option>
+                            <option>Donating to the campaign</option>
+                            <option>Sharing on social media</option>
+                            <option>Just want to stay updated</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>What matters most to you in Castle Ward?</label>
+                        <textarea rows="4" placeholder="Tell us about the issues that affect you and your family..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+                        Join Our Campaign
+                    </button>
+                </form>
+            </div>
+            
+            <div class="social-links">
+                <a href="#" title="Facebook">📘</a>
+                <a href="#" title="Twitter">🐦</a>
+                <a href="#" title="Instagram">📷</a>
+                <a href="#" title="Email">📧</a>
+            </div>
+            
+            <div style="margin-top: 3rem; padding: 2rem; background: rgba(255,255,255,0.1); border-radius: 12px;">
+                <h3>Contact Your Labour Team</h3>
+                <p><strong>Campaign Office:</strong> Cambridge Labour Party</p>
+                <p><strong>Email:</strong> castle@cambridgelabour.org</p>
+                <p><strong>Phone:</strong> 01223 XXX XXX</p>
+                <p style="margin-top: 1rem; font-size: 0.9rem;">
+                    <em>Promoted by Cambridge Labour Party on behalf of Labour candidates. 
+                    We respect your privacy and will only use your data to contact you about local political matters.</em>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Cambridge Labour Party - Castle Ward Campaign. Authorized by the Election Agent.</p>
+            <p>A stronger voice for Castle Ward. Real change for working families.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handler
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const name = formData.get('name') || this.querySelector('input[type="text"]').value;
+            
+            // Show success message
+            const button = this.querySelector('button[type="submit"]');
+            const originalText = button.textContent;
+            button.textContent = 'Thank You! We\'ll Be In Touch';
+            button.style.background = '#28a745';
+            
+            // Reset after 3 seconds
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.style.background = '';
+                this.reset();
+            }, 3000);
+            
+            // In a real application, this would submit to a server
+            console.log('Form submitted for Castle Ward Labour campaign');
+        });
+
+        // Add dynamic statistics counter animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.highlight-stat');
+            counters.forEach(counter => {
+                const target = parseInt(counter.textContent.replace(/\D/g, ''));
+                if (target > 0) {
+                    let current = 0;
+                    const increment = target / 50;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            counter.textContent = target === 1000 ? '1,000+' : target.toString();
+                            clearInterval(timer);
+                        } else {
+                            counter.textContent = Math.floor(current).toString();
+                        }
+                    }, 30);
+                }
+            });
+        }
+
+        // Trigger counter animation when section is visible
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && entry.target.id === 'comparison') {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const comparisonSection = document.getElementById('comparison');
+        if (comparisonSection) {
+            observer.observe(comparisonSection);
+        }
+
+        // Add hover effects for interactive elements
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
